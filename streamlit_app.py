@@ -2,11 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-import altair as alt
 import plotly.express as px
 import plotly.graph_objects as go
-import folium
-from streamlit_folium import st_folium
 import random
 
 st.set_page_config(page_title="Start-up Funding (India)", page_icon="🪙", layout="wide")
