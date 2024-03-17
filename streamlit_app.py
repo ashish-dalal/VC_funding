@@ -122,13 +122,14 @@ def investor_details(investor):
     ""
     col1, col2 = st.columns(2)
     with col1:
-        "#### ✅ *Industry-wise*"
-        fig = fig = px.pie(df[investor_mask].groupby('industry').sum().reset_index(), 
+        "#### ✅ *Industry-wise Investments*"
+        fig = px.pie(df[investor_mask].groupby('industry').sum().reset_index(), 
         values='amount', names='industry', hole=0.35, color_discrete_sequence=px.colors.sequential.Peach)
+        fig.update_traces(textposition='inside', textinfo='percent+label')
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        "#### ✅ *Round-wise*"
+        "#### ✅ *Round-wise Investments*"
         fig2 = px.pie(df[investor_mask].groupby('round').sum().reset_index(), 
         values='amount', names='round', hole=0.35, color_discrete_sequence=px.colors.sequential.Purp)
         fig2.update_traces(textposition='inside', textinfo='percent+label')
