@@ -12,11 +12,14 @@ st.set_page_config(page_title="Start-up Funding (India)", page_icon="🪙", layo
 st.sidebar.title('Menu')
 st.sidebar.divider()
 
-df = pd.read_csv('startup_cleaned.csv')
+startup_data = pd.read_csv('startup_cleaned.csv')
+df = startup_data.copy()
 df['investors'] = df['investors'].fillna('Not Known')
 
 df['date'] = pd.to_datetime(df['date'], errors='coerce')
 df['year'] = df['date'].dt.year
+df['month'] = df['date'].dt.month
+df.drop(columns=['date'], inplace=True)
 
 
 
@@ -102,7 +105,7 @@ def investor_details(investor):
 
     "#### ✅ *Recent Investments*"
     ""
-    st.dataframe(df[investor_mask][['date','startup','industry','city','round','amount']].set_index('startup').head(), use_container_width=True)
+    st.dataframe(startup_data[investor_mask][['date','startup','industry','city','round','amount']].set_index('startup').head(), use_container_width=True)
 
 
     
@@ -246,7 +249,6 @@ def overall():
     ""
     "### ✅ *Total Investment Made (MoM)*"
     overallMoM = df.copy()
-    overallMoM['month'] = overallMoM['date'].dt.month
     temp = overallMoM.groupby(['year','month'])['amount'].sum().reset_index()
     temp['x-axis'] = temp['month'].astype('str') + "-" + temp['year'].astype('str')
     
