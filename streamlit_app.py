@@ -171,9 +171,9 @@ def startup_details(startup):
     col1, col2, col3 = st.columns(3)
     
     with col2:
-        st.metric("Industry", df[startup_mask].iloc[0,2])
+        st.metric("Industry", df[startup_mask].iloc[0,1])
     with col3:
-        st.metric('Vertical', df[startup_mask].iloc[0,3])    
+        st.metric('Vertical', df[startup_mask].iloc[0,2])    
     with col1:
         if ((df[startup_mask]['amount'].sum()/1000000)<1):
             st.metric("Total Amount Raised", "$ {:.0f}".format(df[startup_mask]['amount'].sum()/1000)+"K")
@@ -183,7 +183,7 @@ def startup_details(startup):
     
     
     ""
-    "## Based in " + df[startup_mask].iloc[0,4]
+    "## Based in " + df[startup_mask].iloc[0,3]
     #latitide = df[startup_mask]['latitude'].iloc[0]
     #longitude = df[startup_mask]['longitude'].iloc[0]
     
