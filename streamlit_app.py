@@ -184,7 +184,7 @@ def startup_details(startup):
     #longitude = df[startup_mask]['longitude'].iloc[0]
     
     #m = folium.Map(location=[latitide,longitude], zoom_start=10, width=400, height=400)
-    st.map(df[startup_mask][['latitude','longitude']], size=(40,40))
+    st.map(df[startup_mask][['latitude','longitude']], size=(40,40), use_container_width=True)
 
         
     ""
@@ -212,7 +212,7 @@ def startup_details(startup):
         st.plotly_chart(figRound, use_container_width=True)
     
     ""
-    "## YoY funding"
+    "## ✅ YoY funding"
     funding_yoy = df[startup_mask].groupby('year')['amount'].sum()
 
     temp_dict2 = dict()
