@@ -189,7 +189,7 @@ def startup_details(startup):
         
     ""
 
-    "### ☑️ "+startup+" Investments"
+    "### ✅ "+startup+" Investments"
     
     figBarh = px.bar(df[startup_mask].sort_values('amount'),x='amount',y='investors', orientation='h', text_auto=True)
     figBarh.update_traces(marker_color='#063970')
@@ -247,7 +247,6 @@ def overall():
     overallMoM['month'] = overallMoM['date'].dt.month
     temp = overallMoM.groupby(['year','month'])['amount'].sum().reset_index()
     temp['x-axis'] = temp['month'].astype('str') + "-" + temp['year'].astype('str')
-    temp['amount'] = temp['amount']
     
     figOverall = go.Figure() 
     figOverall.add_trace(go.Scatter(x=temp['x-axis'], y=temp['amount'], mode='lines+markers', line=dict(color='#f8f1e9')))
