@@ -198,6 +198,7 @@ def startup_details(startup):
     col21, col22 = st.columns(2)
     
     with col21:
+        "#### Funding Amount from Investors"
         figInvPie = px.pie(df[startup_mask].groupby('investors')['amount'].sum().reset_index(), 
             values='amount', names='investors', hole=0.35, color_discrete_sequence=px.colors.sequential.Purp)
         figInvPie.update_traces(textposition='outside', textinfo='label+percent')
@@ -205,6 +206,7 @@ def startup_details(startup):
         st.plotly_chart(figInvPie, use_container_width=True)
 
     with col22:
+        "#### Funds Raised in Different Rounds"
         figRound = px.pie(df[startup_mask].groupby('round')['amount'].sum().reset_index(), 
             values='amount', names='round', hole=0.35, color_discrete_sequence=px.colors.sequential.Peach)
         figRound.update_traces(textposition='inside', textinfo='percent+label')
