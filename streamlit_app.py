@@ -214,7 +214,7 @@ def startup_details(startup):
         st.plotly_chart(figRound, use_container_width=True)
     
     ""
-    "## ✅ YoY funding"
+    "## ✅ YoY Funding"
     funding_yoy = df[startup_mask].groupby('year')['amount'].sum()
 
     temp_dict2 = dict()
