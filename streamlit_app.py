@@ -189,7 +189,7 @@ def startup_details(startup):
         
     ""
 
-    "### ✅ "+startup+" Investments"
+    "### ✅ Past Investments"
     
     figBarh = px.bar(df[startup_mask].sort_values('amount'),x='amount',y='investors', orientation='h', text_auto=True)
     figBarh.update_traces(marker_color='#063970')
